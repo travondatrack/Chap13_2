@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ch12-user-admin
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    dockerCommand: ""
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+    healthCheckPath: /

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="docker-build" default="dist" basedir=".">
+    <property name="dist.dir" value="dist"/>
+    <property name="war.name" value="ch12_ex2_userAdmin.war"/>
+    <property name="build.work.dir" value="build-docker"/>
+    <property name="classes.dir" value="${build.work.dir}/classes"/>
+
+    <path id="compile.classpath">
+        <fileset dir="build/web/WEB-INF/lib">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="/tmp/servlet-api.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.work.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac srcdir="src/java"
+               destdir="${classes.dir}"
+               includeantruntime="false"
+               encoding="UTF-8"
+               debug="true">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <war destfile="${dist.dir}/${war.name}" webxml="web/WEB-INF/web.xml">
+            <fileset dir="web" excludes="WEB-INF/**"/>
+            <webinf dir="web/WEB-INF" excludes="web.xml"/>
+            <classes dir="${classes.dir}"/>
+            <lib dir="build/web/WEB-INF/lib"/>
+            <metainf dir="web/META-INF"/>
+        </war>
+    </target>
+</project>

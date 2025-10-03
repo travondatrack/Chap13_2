@@ -1,0 +1,3 @@
+@echo off
+cd /d "D:\JAVA\Java-Servlets-and-JSP-master\Java-Servlets-and-JSP-master\ch12_ex2_userAdmin"
+"D:\CODELTWEB\apache-ant-1.10.15-bin\apache-ant-1.10.15\bin\ant.bat" -f "D:\JAVA\Java-Servlets-and-JSP-master\Java-Servlets-and-JSP-master\ch12_ex2_userAdmin" -Dnb.internal.action.name=run.single -Ddirectory.deployment.supported=true -DforceRedeploy=false -Djavac.jsp.includes=org/apache/jsp/index_jsp.java -Drun.single.on.server=yes -Dbrowser.context="D:\JAVA\Java-Servlets-and-JSP-master\Java-Servlets-and-JSP-master\ch12_ex2_userAdmin\web\index.jsp" -Djsp.includes="D:\JAVA\Java-Servlets-and-JSP-master\Java-Servlets-and-JSP-master\ch12_ex2_userAdmin\build\web\index.jsp" -Dclient.urlPart=/index.jsp run
